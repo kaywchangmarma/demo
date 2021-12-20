@@ -1,4 +1,5 @@
 import 'package:demo/view/home_viiew/home_body.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -36,12 +37,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
 
-
-      ),
       drawer: const Drawer(),
 
       body: _widgetOptions.elementAt(_selectedIndex),

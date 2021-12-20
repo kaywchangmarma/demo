@@ -17,10 +17,22 @@ class New_Arrival extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('New Arrival',style: TextStyle(
-              fontSize: 20,
+           Row(
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: const [
 
-            ),),
+               Text('New Arrival',style: TextStyle(
+                 fontSize: 20,
+
+               ),
+               ),
+               Text('See All',style: TextStyle(
+                 fontSize: 16,
+
+               ),
+               ),
+             ],
+           ),
 
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,

@@ -1,3 +1,4 @@
+import 'package:demo/view/home_viiew/widget/brand.dart';
 import 'package:demo/view/home_viiew/widget/category_widget.dart';
 import 'package:demo/view/home_viiew/widget/featured_widget.dart';
 import 'package:demo/view/home_viiew/widget/image_slidder.dart';
@@ -17,15 +18,70 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
-    return SizedBox(
-      height: height,
-      child: ListView(
-        children: const [
-          ImageSlidder(),
-          CategoryWidget(),
-          FeaturedWidget(),
-          New_Arrival()
+    return Scaffold(
+      appBar: AppBar(
+
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(Icons.sort),
+          color: Colors.black,
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
+
+        backgroundColor: Colors.white,
+        elevation: 0,
+
+        actions: [
+          Container(
+            height: width*.115 ,
+            width: width*.55,
+            decoration: BoxDecoration (
+              color: const Color(0xFF979797).withOpacity(0.1),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const TextField(
+
+              decoration: InputDecoration(
+                hintText: 'Search Product',
+               enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                prefixIcon: Icon(Icons.search)
+              ),
+            ),
+          ),
+          
+          IconButton(
+            icon:  const Icon(Icons.shopping_cart),
+            color: Colors.black,
+            onPressed: () {
+
+            },
+          ),
+
+          IconButton(
+            icon:  const Icon(Icons.notifications),
+            color: Colors.black,
+            onPressed: () {
+
+            },
+          ),
         ],
+
+
+      ),
+      body: SizedBox(
+        height: height,
+        child: ListView(
+          children: const [
+            ImageSlidder(),
+            CategoryWidget(),
+            Brand(),
+            FeaturedWidget(),
+            New_Arrival()
+          ],
+        ),
       ),
     );
   }

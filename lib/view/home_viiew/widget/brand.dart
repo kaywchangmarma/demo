@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+class Brand extends StatelessWidget {
+  const Brand({Key? key}) : super(key: key);
 
-class FeaturedWidget extends StatelessWidget {
-  const FeaturedWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,22 +9,23 @@ class FeaturedWidget extends StatelessWidget {
     double width=MediaQuery.of(context).size.width;
 
     return Container(
-      height: width*.67,
+      height: width*.35,
       width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0,right: 8,top: 8),
+        padding: const EdgeInsets.only(left:8.0,right: 8,top: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-
-              Text('Featured',style: TextStyle(
+              Text('Brand',style: TextStyle(
                 fontSize: 20,
 
               ),),
-
               Text('See All',style: TextStyle(
                 fontSize: 16,
 
@@ -37,37 +38,24 @@ class FeaturedWidget extends StatelessWidget {
               child: Row(
                 children: List.generate(5, (index){
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.only(left:8.0,right: 8,top: 8),
                     child: Container(
-                      height: 200,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-
+                      width: 100,
 
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:    [
-                          ClipRRect(
+                        children:  [
 
+                          ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: const Image(
-                              height: 140,
-                              image: AssetImage(
+                            child: const Image(image: AssetImage(
                               'assets/p.jpeg',
-                            ),
-                            fit: BoxFit.fill,
-                            ),
+                            ),),
                           ),
+
                           const Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: Text("ABC"),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: Text("BDT 200"),
-                          ),
+                            padding: EdgeInsets.all(8.0),
+                            child: Text("Title"),
+                          )
                         ],
                       ),
                     ),
@@ -80,4 +68,5 @@ class FeaturedWidget extends StatelessWidget {
       ),
     );
   }
+
 }
