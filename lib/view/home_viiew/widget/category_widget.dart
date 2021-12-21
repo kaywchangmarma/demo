@@ -1,3 +1,4 @@
+import 'package:demo/view/category/category_seeall.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,17 +23,28 @@ class CategoryWidget extends StatelessWidget {
            children: [
            Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-             children: const [
+             children:  [
 
                Text('Category',style: TextStyle(
                  fontSize: 20,
 
                ),
                ),
-               Text('See All',style: TextStyle(
-                 fontSize: 16,
+               GestureDetector(
+                 onTap: ()
+                 {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => CategorySeeAll()),
+                   );
+                 },
+                 child: Text(
 
-               ),
+                   'See All',style: TextStyle(
+                   fontSize: 16,
+
+                 ),
+                 ),
                ),
              ],
            ),

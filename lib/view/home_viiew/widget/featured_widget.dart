@@ -25,10 +25,6 @@ class FeaturedWidget extends StatelessWidget {
 
               ),),
 
-              Text('See All',style: TextStyle(
-                fontSize: 16,
-
-              ),),
             ],
           ),
 

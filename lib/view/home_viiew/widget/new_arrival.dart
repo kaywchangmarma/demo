@@ -1,3 +1,4 @@
+import 'package:demo/view/newarrival/newarrival_seeall.dart';
 import 'package:flutter/material.dart';
 
 class New_Arrival extends StatelessWidget {
@@ -19,17 +20,28 @@ class New_Arrival extends StatelessWidget {
           children: [
            Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-             children: const [
+             children:  [
 
-               Text('New Arrival',style: TextStyle(
+               const Text('New Arrival',style: TextStyle(
                  fontSize: 20,
 
                ),
                ),
-               Text('See All',style: TextStyle(
-                 fontSize: 16,
 
-               ),
+
+               GestureDetector(
+                 onTap: ()
+                 {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => NewArrivalSeeAll()),
+                   );
+                 },
+                 child: const Text('See All',style: TextStyle(
+                   fontSize: 16,
+
+                 ),
+                 ),
                ),
              ],
            ),

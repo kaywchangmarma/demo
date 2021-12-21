@@ -1,3 +1,4 @@
+import 'package:demo/view/brand/brand_seeall.dart';
 import 'package:flutter/material.dart';
 class Brand extends StatelessWidget {
   const Brand({Key? key}) : super(key: key);
@@ -21,15 +22,27 @@ class Brand extends StatelessWidget {
           children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text('Brand',style: TextStyle(
+            children:  [
+              const Text('Brand',style: TextStyle(
                 fontSize: 20,
 
               ),),
-              Text('See All',style: TextStyle(
-                fontSize: 16,
 
-              ),),
+
+              GestureDetector(
+                onTap: ()
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BrandSeeAll()),
+                  );
+                },
+                child: const Text(
+                  'See All',style: TextStyle(
+                  fontSize: 16,
+
+                ),),
+              ),
             ],
           ),
 

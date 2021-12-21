@@ -1,4 +1,7 @@
 import 'package:demo/view/home_viiew/home_body.dart';
+import 'package:demo/view/home_viiew/widget/drawer_widget.dart';
+import 'package:demo/view/profile/profile.dart';
+import 'package:demo/view/wishlist/wishlist.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,13 +20,12 @@ class _HomeViewState extends State<HomeView> {
   static const List<Widget> _widgetOptions = <Widget>[
    HomeBody(),
     Text(
-      'Index 1: Business',
+      'Index 1: Cart',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    WishList(),
+    Profile(),
+
   ];
 
   void _onItemTapped(int index) {
@@ -38,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      drawer: const Drawer(),
+      drawer: const DrawerWidget(),
 
       body: _widgetOptions.elementAt(_selectedIndex),
 
@@ -46,21 +48,31 @@ class _HomeViewState extends State<HomeView> {
 
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
+
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
           ),
+
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.favorite),
+            label: 'Wishlist',
           ),
+
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person),
+            label: 'Profile',
+          ),
+
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
       ),
 
