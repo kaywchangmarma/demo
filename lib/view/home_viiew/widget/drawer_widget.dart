@@ -28,7 +28,7 @@ class DrawerWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon(Icons.category),
+            leading: Icon(Icons.favorite),
             title: Text('Wishlist'),
           ),
           ListTile(

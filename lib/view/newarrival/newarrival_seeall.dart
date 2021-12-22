@@ -1,3 +1,5 @@
+import 'package:demo/view/common/single_product_card.dart';
+import 'package:demo/view/product_details/product_details.dart';
 import 'package:flutter/material.dart';
 
 class NewArrivalSeeAll extends StatelessWidget {
@@ -29,43 +31,7 @@ class NewArrivalSeeAll extends StatelessWidget {
           crossAxisCount: 2,
           childAspectRatio: 0.81,
           children: List.generate(10, (index){
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 200,
-                width: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-
-
-
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: const Image(
-                        height: 140,
-                        image: AssetImage(
-                          'assets/p.jpeg',
-                        ),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("ABC"),
-                    ),
-
-                    const Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text("BDT 300"),
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return SingleProduct();
           })
       ),
     );

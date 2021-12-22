@@ -1,3 +1,4 @@
+import 'package:demo/api_controller/slider_api.dart';
 import 'package:demo/view/home_viiew/widget/brand.dart';
 import 'package:demo/view/home_viiew/widget/category_widget.dart';
 import 'package:demo/view/home_viiew/widget/featured_widget.dart';
@@ -13,6 +14,16 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +46,8 @@ class _HomeBodyState extends State<HomeBody> {
 
         actions: [
           Container(
-            height: width*.115 ,
-            width: width*.55,
+            height: width*.125 ,
+            width: width*.73,
             decoration: BoxDecoration (
               color: const Color(0xFF979797).withOpacity(0.1),
               borderRadius: BorderRadius.circular(15),
@@ -51,14 +62,7 @@ class _HomeBodyState extends State<HomeBody> {
               ),
             ),
           ),
-          
-          IconButton(
-            icon:  const Icon(Icons.shopping_cart),
-            color: Colors.black,
-            onPressed: () {
 
-            },
-          ),
 
           IconButton(
             icon:  const Icon(Icons.notifications),
@@ -74,12 +78,24 @@ class _HomeBodyState extends State<HomeBody> {
       body: SizedBox(
         height: height,
         child: ListView(
-          children: const [
-            ImageSlidder(),
+          children:  [
+            FutureBuilder(
+              future:  SliderApi().fetch(),
+              builder: (context, snapshot) {
+              if(snapshot.data!=null)
+                {
+                  return ImageSlidder(imageUrl: 'assets/p.jpeg',);
+                }
+              else
+                {
+                  return Center(child: CircularProgressIndicator());
+                }
+              }
+            ),
             CategoryWidget(),
             Brand(),
             FeaturedWidget(),
-            New_Arrival()
+            New_Arrival(),
           ],
         ),
       ),

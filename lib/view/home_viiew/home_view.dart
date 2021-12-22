@@ -1,3 +1,4 @@
+import 'package:demo/view/cart/cart_screen.dart';
 import 'package:demo/view/home_viiew/home_body.dart';
 import 'package:demo/view/home_viiew/widget/drawer_widget.dart';
 import 'package:demo/view/profile/profile.dart';
@@ -19,10 +20,7 @@ class _HomeViewState extends State<HomeView> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
    HomeBody(),
-    Text(
-      'Index 1: Cart',
-      style: optionStyle,
-    ),
+   CartScreen(),
     WishList(),
     Profile(),
 
