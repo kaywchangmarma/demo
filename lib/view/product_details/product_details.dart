@@ -1,4 +1,5 @@
 import 'package:demo/view/home_viiew/widget/image_slidder.dart';
+import 'package:demo/view/product_details/image_slidder_product.dart';
 import 'package:flutter/material.dart';
 class ProductDetails extends StatefulWidget {
   const ProductDetails({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
           ListView(
             children: [
-              ImageSlidder(height: MediaQuery.of(context).size.width*.7,padding: 0.0,radius: 0.0,imageUrl: 'assets/p2.jpeg',),
+              ProductImageSlider(height: MediaQuery.of(context).size.width*.7,padding: 0.0,radius: 0.0,imageUrl: 'assets/p2.jpeg',),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(

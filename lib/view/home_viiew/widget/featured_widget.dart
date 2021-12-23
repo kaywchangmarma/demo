@@ -1,3 +1,4 @@
+import 'package:demo/api_controller/featured_api.dart';
 import 'package:demo/view/common/single_product_card.dart';
 import 'package:demo/view/product_details/product_details.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +31,21 @@ class FeaturedWidget extends StatelessWidget {
             ],
           ),
 
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(5, (index){
-                  return SingleProduct();
-                }),
-              ),
+            FutureBuilder(
+              future: FeaturedApi().fetch(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if(snapshot.data==null){
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(5, (index){
+                        return SingleProduct();
+                      }),
+                    ),
+                  );
+                }
+
+    }
             )
           ],
         ),

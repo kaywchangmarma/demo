@@ -9,8 +9,9 @@ class Profile extends StatelessWidget {
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
-        //backgroundColor: Colors.white,
+        title: Text('Profile',style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
 
       body: Container(

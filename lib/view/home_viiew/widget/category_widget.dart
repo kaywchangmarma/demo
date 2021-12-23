@@ -1,5 +1,6 @@
+import 'package:demo/api_controller/api_url.dart';
+import 'package:demo/api_controller/category_api.dart';
 import 'package:demo/view/category/category_seeall.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -11,7 +12,7 @@ class CategoryWidget extends StatelessWidget {
     double width=MediaQuery.of(context).size.width;
 
     return Container(
-       height: width*.35,
+      // height: width*.5,
        width: width,
        decoration: BoxDecoration(
          borderRadius: BorderRadius.circular(10),
@@ -25,7 +26,7 @@ class CategoryWidget extends StatelessWidget {
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children:  [
 
-               Text('Category',style: TextStyle(
+               const Text('Category',style: TextStyle(
                  fontSize: 20,
 
                ),
@@ -38,7 +39,7 @@ class CategoryWidget extends StatelessWidget {
                      MaterialPageRoute(builder: (context) => CategorySeeAll()),
                    );
                  },
-                 child: Text(
+                 child: const Text(
 
                    'See All',style: TextStyle(
                    fontSize: 16,
@@ -49,35 +50,48 @@ class CategoryWidget extends StatelessWidget {
              ],
            ),
 
-             SingleChildScrollView(
-               scrollDirection: Axis.horizontal,
-               child: Row(
-                 children: List.generate(5, (index){
-                   return Padding(
-                     padding: const EdgeInsets.only(left:8.0,right: 8,top: 8),
-                     child: Container(
-                       width: 100,
+             FutureBuilder(
+               future: CategoryApi().fetch(),
+               builder: (BuildContext context,AsyncSnapshot snapshot) {
+                if(snapshot.data!=null)
+                  {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(snapshot.data.length, (index){
+                          return Padding(
+                            padding: const EdgeInsets.only(left:8.0,right: 8,top: 8),
+                            child: SizedBox(
+                              width: 100,
+                              height: width*.32,
 
-                       child: Column(
-                         children:  [
+                              child: Column(
+                                children:  [
 
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10),
-                             child: const Image(image: AssetImage(
-                               'assets/p.jpeg',
-                             ),),
-                           ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child:  Image(image: NetworkImage(
+                                      '${ApiKeys.imageHead}/images/category/${snapshot.data[index]['image']}',
+                                    ),),
+                                  ),
 
-                           const Padding(
-                             padding: EdgeInsets.all(8.0),
-                             child: Text("Title"),
-                           )
-                         ],
-                       ),
-                     ),
-                   );
-                 }),
-               ),
+                                   Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(snapshot.data[index]['name'],maxLines: 2,),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    );
+                  }
+                else
+                  {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+               }
              )
            ],
          ),

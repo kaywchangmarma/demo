@@ -13,13 +13,7 @@ class WishList extends StatelessWidget {
           color: Colors.black,
         ),),
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.black,
-          onPressed: (){
-            Navigator.pop(context);
-          },
-        ),
+
       ),
 
       body: GridView.count(

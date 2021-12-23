@@ -17,13 +17,13 @@ class _HomeBodyState extends State<HomeBody> {
 
 
   @override
-  void initState() {
-    // TODO: implement initState
-
-
-
-    super.initState();
-  }
+  // void initState() {
+  //   // TODO: implement initState
+  //
+  //
+  //
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -78,24 +78,14 @@ class _HomeBodyState extends State<HomeBody> {
       body: SizedBox(
         height: height,
         child: ListView(
-          children:  [
-            FutureBuilder(
-              future:  SliderApi().fetch(),
-              builder: (context, snapshot) {
-              if(snapshot.data!=null)
-                {
-                  return ImageSlidder(imageUrl: 'assets/p.jpeg',);
-                }
-              else
-                {
-                  return Center(child: CircularProgressIndicator());
-                }
-              }
-            ),
+          children:  const [
+          ImageSlidder(),
             CategoryWidget(),
             Brand(),
             FeaturedWidget(),
             New_Arrival(),
+
+            SizedBox(height: 20,)
           ],
         ),
       ),

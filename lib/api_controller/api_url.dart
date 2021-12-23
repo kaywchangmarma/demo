@@ -3,7 +3,6 @@ class ApiKeys {
   static String baseUrl = 'https://azoka.com.bd/';
   static String imageHead = 'https://pos.azoka.com.bd/';
   static String forgotPassword = '${baseUrl}customers/resetemail/customer';
-
   static String slider = '${baseUrl}api/v1/sliders';
   static String shops = '${baseUrl}api/v1/shops';
   static String subShops = '${baseUrl}api/v1/shops/';

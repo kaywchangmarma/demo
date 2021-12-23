@@ -21,13 +21,7 @@ class _CartScreenState extends State<CartScreen> {
           color: Colors.black,
         ),),
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.black,
-          onPressed: (){
-            Navigator.pop(context);
-          },
-        ),
+
       ),
 
       body: SingleChildScrollView(
