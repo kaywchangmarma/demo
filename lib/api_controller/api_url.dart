@@ -20,7 +20,7 @@ class ApiKeys {
   static String wishList = '${baseUrl}api/v1/wishlist?token';
   static String addWishList = '${baseUrl}api/v1/wishlist?token';
   static String removeWishList = '${baseUrl}api/v1/wishlist/delete';
-  static String acccount = '${baseUrl}api/v1/my-account';
+  static String account = '${baseUrl}api/v1/my-account';
   static String updateAccount = '${baseUrl}api/v1/my-account/update-account';
   static String updateAddress = '${baseUrl}api/v1/my-account/update-address';
   static String cashOnDelivery = '${baseUrl}api/pay';

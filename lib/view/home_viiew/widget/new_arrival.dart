@@ -1,3 +1,4 @@
+import 'package:demo/api_controller/newarrive_api.dart';
 import 'package:demo/view/common/single_product_card.dart';
 import 'package:demo/view/newarrival/newarrival_seeall.dart';
 import 'package:demo/view/product_details/product_details.dart';
@@ -48,13 +49,30 @@ class New_Arrival extends StatelessWidget {
              ],
            ),
 
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(5, (index){
-                  return SingleProduct();
-                }),
-              ),
+            FutureBuilder(
+              future: NewArriveApi().fetch(),
+              builder: (BuildContext context,AsyncSnapshot snapshot) {
+                if(snapshot.data!=null){
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(snapshot.data.length, (index){
+                        return SingleProduct(
+                          name: snapshot.data[index]['name'],
+                          image: snapshot.data[index]['image'],
+                          price: snapshot.data[index]['price'],
+                          specialPrice: snapshot.data[index]['promotion_price'],
+
+                        );
+                      }),
+                    ),
+                  );
+                }
+
+                else{
+                  return const Center(child: CircularProgressIndicator());
+                }
+              }
             )
           ],
         ),

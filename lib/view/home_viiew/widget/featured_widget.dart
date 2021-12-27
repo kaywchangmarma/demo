@@ -1,3 +1,4 @@
+import 'package:demo/api_controller/api_url.dart';
 import 'package:demo/api_controller/featured_api.dart';
 import 'package:demo/view/common/single_product_card.dart';
 import 'package:demo/view/product_details/product_details.dart';
@@ -33,20 +34,44 @@ class FeaturedWidget extends StatelessWidget {
 
             FutureBuilder(
               future: FeaturedApi().fetch(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if(snapshot.data==null){
-                  return SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(5, (index){
-                        return SingleProduct();
-                      }),
-                    ),
-                  );
-                }
+              builder: (BuildContext context,AsyncSnapshot snapshot) {
+                if(snapshot.data!=null)
+                  {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(snapshot.data.length, (index){
+                          return  SingleProduct(
+                            // name: snapshot.data[index]['name'],
+                            // image: snapshot.data[index]['image'],
+                            // price: snapshot.data[index]['price'],
+                          );
+                        }),
+                      ),);
+                  }
+                else
+                  {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+              }
+            ),
 
-    }
-            )
+    //         FutureBuilder(
+    //           future: FeaturedApi().fetch(),
+    //           builder: (BuildContext context, AsyncSnapshot snapshot) {
+    //             if(snapshot.data==null){
+    //               return SingleChildScrollView(
+    //                 scrollDirection: Axis.horizontal,
+    //                 child: Row(
+    //                   children: List.generate(5, (index){
+    //                     return const SingleProduct();
+    //                   }),
+    //                 ),
+    //               );
+    //             }
+    //
+    // }
+    //         )
           ],
         ),
       ),

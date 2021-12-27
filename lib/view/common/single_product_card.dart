@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 
 
 class SingleProduct extends StatelessWidget {
-  const SingleProduct({Key? key}) : super(key: key);
+
+  String? name;
+  String? image;
+  String? price;
+  String? specialPrice;
+
+
+   SingleProduct({Key? key,this.name='',this.image='',this.price='00',this.specialPrice=''}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class SingleProduct extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:  EdgeInsets.all(8.0),
         child: Container(
           height: 200,
           width: 150,
@@ -40,14 +47,14 @@ class SingleProduct extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text("ABC"),
+               Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Text('$name',maxLines: 1,),
               ),
 
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(5.0),
-                child: Text("BDT 300"),
+                child: Text("BDT $price"),
               ),
             ],
           ),

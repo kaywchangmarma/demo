@@ -3,28 +3,26 @@ import 'dart:convert';
 import 'package:demo/api_controller/api_url.dart';
 import 'package:http/http.dart' as http;
 
-class FeaturedApi {
+class SubCatApi {
   var jsonData;
-  List _featuredProducts = [];
+  List _subShops = [];
 
-  Future fetch() async {
+  Future fetch(String id) async {
     try {
       http.Response response = await http.get(
-        Uri.parse(ApiKeys.featuredProducts),
+        Uri.parse(ApiKeys.subShops+id),
         headers: {'Accept': 'application/json'},
       );
-
-
-      print(response.statusCode);
+     var newjsondata = response.body.replaceAll(r'<br \>', r'\\n');
 
       if (response.statusCode == 200) {
-        jsonData = jsonDecode(response.body);
-        _featuredProducts.clear();
-        _featuredProducts = jsonData;
+        jsonData = jsonDecode(newjsondata);
+        _subShops.clear();
+        _subShops = jsonData;
 
-        print('featuredProducts: ${_featuredProducts[0]}');
+        print('subcat: ${_subShops}');
 
-        return _featuredProducts;
+        return _subShops;
 
       } else {
         throw Exception('Failed to load data');

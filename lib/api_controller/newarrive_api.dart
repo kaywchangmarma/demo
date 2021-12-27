@@ -1,16 +1,15 @@
 import 'dart:convert';
-
 import 'package:demo/api_controller/api_url.dart';
 import 'package:http/http.dart' as http;
 
-class FeaturedApi {
+class NewArriveApi {
   var jsonData;
-  List _featuredProducts = [];
+  List _newArrivals = [];
 
   Future fetch() async {
     try {
       http.Response response = await http.get(
-        Uri.parse(ApiKeys.featuredProducts),
+        Uri.parse(ApiKeys.newArrivals),
         headers: {'Accept': 'application/json'},
       );
 
@@ -19,12 +18,12 @@ class FeaturedApi {
 
       if (response.statusCode == 200) {
         jsonData = jsonDecode(response.body);
-        _featuredProducts.clear();
-        _featuredProducts = jsonData;
+        _newArrivals.clear();
+        _newArrivals = jsonData;
 
-        print('featuredProducts: ${_featuredProducts[0]}');
+        print('new: ${_newArrivals}');
 
-        return _featuredProducts;
+        return _newArrivals;
 
       } else {
         throw Exception('Failed to load data');
