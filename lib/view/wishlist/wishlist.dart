@@ -2,6 +2,11 @@ import 'package:demo/view/common/single_product_card.dart';
 import 'package:flutter/material.dart';
 
 class WishList extends StatelessWidget {
+
+  // String? name;
+  // String? image;
+  // String? price;
+
   const WishList({Key? key}) : super(key: key);
 
   @override
@@ -24,7 +29,9 @@ class WishList extends StatelessWidget {
           crossAxisCount: 2,
           childAspectRatio: 0.81,
           children: List.generate(10, (index){
-            return SingleProduct();
+            return SingleProduct(
+
+            );
           })
       ),
     );

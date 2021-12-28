@@ -25,7 +25,7 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
           width: MediaQuery.of(context).size.width,
 
         child:CarouselSlider.builder(
-          itemCount: 5,
+          itemCount: widget.imageUrl.length,
           itemBuilder: (BuildContext context, int index, index1) {
 
             return Container(
@@ -35,7 +35,7 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(widget.radius),
                 image:   DecorationImage(
-                  image: AssetImage(widget.imageUrl),
+                  image: NetworkImage(widget.imageUrl[index]),
                   fit: BoxFit.fill,
                   //alignment:widget.alignment?? Alignment.topCenter,
 

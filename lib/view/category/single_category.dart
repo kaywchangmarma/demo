@@ -20,7 +20,7 @@ class _SingleCategoryState extends State<SingleCategory> {
     return Scaffold(
       appBar: AppBar(
       //  backgroundColor: Colors.white,
-        title:  Text(widget.name!, style: TextStyle(
+        title:  Text(widget.name!, style: const TextStyle(
           color: Colors.black
         ),),
       ),
@@ -32,7 +32,7 @@ class _SingleCategoryState extends State<SingleCategory> {
             Container(
               height: 150,
               width: width,
-              color: Colors.red,
+             // color: Colors.red,
               child:  Image(image: NetworkImage(
                 '${ApiKeys.imageHead}/images/category/${widget.image}',
               ),

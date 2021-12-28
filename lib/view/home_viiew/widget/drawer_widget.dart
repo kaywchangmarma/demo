@@ -1,3 +1,4 @@
+import 'package:demo/view/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -8,7 +9,7 @@ class DrawerWidget extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
+        children:  [
           DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue
@@ -42,6 +43,18 @@ class DrawerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
+          ),
+
+          ListTile(
+            onTap: ()
+            {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
+            },
+            leading: Icon(Icons.login),
+            title: Text('Login'),
           ),
 
 

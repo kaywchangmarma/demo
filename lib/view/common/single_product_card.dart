@@ -1,3 +1,4 @@
+import 'package:demo/api_controller/api_url.dart';
 import 'package:demo/view/product_details/product_details.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +16,22 @@ class SingleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String imageLink = '${ApiKeys.imageHead}images/product/$image'
+        .replaceAll(' ', '%20')
+        .replaceAll('(', '\(')
+        .replaceAll(')', '\)')
+        .split(',')[0];
     return GestureDetector(
       onTap: ()
       {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProductDetails()),
+          MaterialPageRoute(builder: (context) => ProductDetails(
+            image: image,
+            name: name,
+            price: price,
+            specialprice: specialPrice,
+          )),
         );
       },
       child: Padding(
@@ -39,10 +50,10 @@ class SingleProduct extends StatelessWidget {
             children:  [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: const Image(
+                child: Image(
                   height: 140,
-                  image: AssetImage(
-                    'assets/p.jpeg',
+                  image: NetworkImage(
+                    imageLink,
                   ),
                   fit: BoxFit.fill,
                 ),

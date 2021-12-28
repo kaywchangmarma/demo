@@ -1,8 +1,15 @@
+import 'package:demo/api_controller/api_url.dart';
 import 'package:demo/view/home_viiew/widget/image_slidder.dart';
 import 'package:demo/view/product_details/image_slidder_product.dart';
 import 'package:flutter/material.dart';
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({Key? key}) : super(key: key);
+  String? name;
+  String? image;
+  String? price;
+  String? specialprice;
+  String? description;
+
+  ProductDetails({Key? key,this.name='',this.image='',this.price='',this.specialprice='',this.description=''}) : super(key: key);
 
 
   @override
@@ -19,8 +26,21 @@ class _ProductDetailsState extends State<ProductDetails> {
   ];
   int quantity=0;
 
+
   @override
   Widget build(BuildContext context) {
+
+
+
+    List<String> imageList = [];
+    imageList = widget.image!.split(',');
+    List<String> images = [];
+    for (var item in imageList) {
+      images.add('${ApiKeys.imageHead}images/product/$item'
+          .replaceAll(' ', '%20')
+          .replaceAll('(', '\(')
+          .replaceAll(')', '\)'));
+    }
     return Scaffold(
       appBar: AppBar(
 
@@ -31,22 +51,33 @@ class _ProductDetailsState extends State<ProductDetails> {
 
           ListView(
             children: [
-              ProductImageSlider(height: MediaQuery.of(context).size.width*.7,padding: 0.0,radius: 0.0,imageUrl: 'assets/p2.jpeg',),
+              ProductImageSlider(
+                imageUrl: images,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Product Name'),
+                    // const Text('Product Name'),
+                    Expanded(
+                      child: Text(
+                       widget.name!,
+                        style: TextStyle(fontSize: 15, color: Colors.black,fontWeight: FontWeight.bold,),
+                        maxLines: 2,
+                      ),
+                    ),
+
+
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
-                          Icon(Icons.favorite, color: Colors.red,),
-                          SizedBox(height: 5,),
-                          Text('BDT 200'),
+                        children:  [
+                          const Icon(Icons.favorite, color: Colors.red,),
+                          const SizedBox(height: 5,),
+                          Text('BDT ${widget.price!}',style: const TextStyle(fontSize: 15),),
                         ],
                       ),
                     )
@@ -59,7 +90,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Color',style: const TextStyle(fontSize: 18),),
+                    const Text('Color',style: TextStyle(fontSize: 18)),
                     Row(
                       children: List.generate(_colors.length, (index){
                         return Padding(
@@ -146,9 +177,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text('Description',style: TextStyle(fontSize: 18),),
-                        Text('Solar-powered headphones',style: TextStyle(fontSize: 13),),
+
+                        Text(
+                          '${widget.description!}',style: TextStyle(fontSize: 13),
+                        ),
                       ],
                     ),
 
@@ -176,7 +210,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 borderRadius: BorderRadius.circular(30),
               ),
 
-              child: Center(child: Text('ADD TO CART',style: const TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),)),
+              child: const Center(child: Text('ADD TO CART',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),)),
             ),
           )
         ],
