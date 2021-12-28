@@ -28,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 50,),
             Text('LOGIN',style: TextStyle(fontSize: 30),),
 
-
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -125,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.only(top: 14),
                     prefixIcon: Icon(
-                      Icons.password,
+                      Icons.lock,
                       color: Colors.yellow.shade900,
                     ),
                     hintText: 'Enter your Password',
