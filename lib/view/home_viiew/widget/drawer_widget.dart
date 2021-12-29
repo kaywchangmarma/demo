@@ -1,4 +1,6 @@
 import 'package:demo/view/login_screen/login_screen.dart';
+import 'package:demo/view/login_screen/sign_up.dart';
+import 'package:demo/view/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -12,16 +14,17 @@ class DrawerWidget extends StatelessWidget {
         children:  [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue
+              color: Colors.orangeAccent
             ),
-              child: Text(
-                'Demo'
-              ),),
+              child: Image(
+                image: AssetImage('assets/logo_1.png'),
+              ),
+
+          ),
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
           ),
-
 
           ListTile(
             leading: Icon(Icons.account_circle),
@@ -41,6 +44,13 @@ class DrawerWidget extends StatelessWidget {
             title: Text('Privacy policy'),
           ),
           ListTile(
+            onTap: ()
+            {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Settings()),
+              );
+            },
             leading: Icon(Icons.settings),
             title: Text('Settings'),
           ),

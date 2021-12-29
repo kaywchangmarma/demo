@@ -1,3 +1,4 @@
+import 'package:demo/view/login_screen/sign_up.dart';
 import 'package:flutter/material.dart';
 class LoginScreen extends StatefulWidget {
    LoginScreen({Key? key}) : super(key: key);
@@ -13,9 +14,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
+
         title: Text('Login'),
+        backgroundColor: Colors.yellow.shade900,
+
       ),
 
 
@@ -26,7 +34,16 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
 
             SizedBox(height: 50,),
-            Text('LOGIN',style: TextStyle(fontSize: 30),),
+            //Text('LOGIN',style: TextStyle(fontSize: 30),),
+            const Padding(
+              padding: EdgeInsets.all(8),
+              child: Image(
+                  height: 150,
+                  width: 150,
+                  image: AssetImage(
+                    'assets/logo_1.png',
+        ),),
+            ),
 
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -147,9 +164,47 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.yellow.shade900,
                 child: Center(child: Text('Login',style: TextStyle(color: Colors.white),)),
               ),
-            )
+            ),
+
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Container(
+                  child: Row(
+                    children: [
+                      Text(
+                        "Do You Have an Account?",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                      ),
+
+                      GestureDetector(
+                        onTap: ()
+                        {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignUp()),
+                          );
+                        },
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.yellow.shade900,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ),
+              ),
+            ),
 
           ],
+
         ),
       ),
     );
