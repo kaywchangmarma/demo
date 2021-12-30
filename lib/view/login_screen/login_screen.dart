@@ -166,6 +166,24 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
 
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                alignment: Alignment.centerRight,
+                child: Column(
+                  children: [
+                    Text(
+                        'Forgot Password?',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.yellow.shade900,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
 
             Padding(
               padding: const EdgeInsets.all(8.0),
