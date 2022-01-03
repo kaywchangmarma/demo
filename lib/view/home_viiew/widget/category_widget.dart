@@ -41,8 +41,8 @@ class CategoryWidget extends StatelessWidget {
                    );
                  },
                  child: const Text(
-
-                   'See All',style: TextStyle(
+                   'See All',
+                   style: TextStyle(
                    fontSize: 16,
 
                  ),
@@ -80,7 +80,6 @@ class CategoryWidget extends StatelessWidget {
 
                                 child: Column(
                                   children:  [
-
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child:  Image(image: NetworkImage(

@@ -20,7 +20,6 @@ class NewArriveApi {
         jsonData = jsonDecode(response.body);
         _newArrivals.clear();
         _newArrivals = jsonData;
-
         print('new: ${_newArrivals}');
 
         return _newArrivals;

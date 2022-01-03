@@ -45,8 +45,6 @@ class _ImageSlidderState extends State<ImageSlidder> {
 
                       ),
                     ),
-
-
                   );
                 },
                 options: CarouselOptions(
